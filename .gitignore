@@ -1,0 +1,6 @@
+analysis/
+__pycache__/
+terminal_dump/
+tmp/
+analyzers/resources/
+archive/

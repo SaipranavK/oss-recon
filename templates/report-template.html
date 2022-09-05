@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Thesis Report</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        h6,h6{
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+    <br>
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class="col-4">
+                <h3>{{repo_owner}} / {{repo_name}}</h3>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-dark btn-sm mb-1">
+                    Stars <span class="badge badge-light">{{stars}}</span>
+                </button>
+                <button type="button" class="btn btn-dark btn-sm mb-1">
+                    Forks <span class="badge badge-light">{{forks}}</span>
+                </button>
+                <button type="button" class="btn btn-dark btn-sm mb-1">
+                    Watchers <span class="badge badge-light">{{watchers}}</span>
+                </button>
+                <button type="button" class="btn btn-dark btn-sm mb-1">
+                    GitHub Community Health <span class="badge badge-light">{{github_community_health}} / 100</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="container-fluid" style="margin-top:30px">
+        <div class="row">
+            <div class="col-sm-2">
+                <div>
+                    <h6><b>Description</h6></b>
+                    <hr />
+                    {{description}}
+                </div>
+
+                <br />
+                <div>
+                    <h6><b>GitHub API URL</h6></b>
+                    <hr />
+                    <a href="{{api_url}}" target="_blank">{{api_url}}</a>
+                </div>
+
+                <br />
+                <div>
+                    <h6><b>Topics</h6></b>
+                    <hr />
+                    {{topics}}
+                </div>
+                
+                <br />
+                <div>
+                    <h6><b>Active/Recent Releases </b> </h6>
+                    <hr />
+                    {{active_releases}}
+                </div>
+
+                <br />
+                <table class="table" style="margin-top:10px;">
+                    <thead>
+                        <tr>
+                            <th>Programming Languages</th>
+                            <th>Lines Of Code</th>
+                        </tr>
+                    </thead>
+                    {{programming_languages}}
+                </table>
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Compliance Check</h6>
+                        <table class="table mt-2">
+                            <thead>
+                                <tr>
+                                    <th>License</th>
+                                    <th>Community</th>
+                                    <th>Security - Max CVSS Limit</th>
+                                    <th>Security - Max CVE Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{legal}}</td>
+                                    <td>{{community}}</td>
+                                    <td>{{CVE}}</td>
+                                    <td>{{CVSS}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>            
+                </div>
+                <br />
+
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Legal</h6>
+                        <hr />
+                        License : {{license_name}}<br />
+                        URL : <a href="{{license_url}}" target="_blank">{{license_url}}</a><br />
+                        Permissions : {{permissions}}<br />
+                        Conditions : {{conditions}}<br />
+                        Limitations : {{limitations}}<br />
+                    </div>
+                </div>                
+                <br />
+                
+                
+                
+                <div>
+                    <center>
+                        <button type="button" class="btn btn-dark mb-1">
+                            Age <span class="badge badge-light">{{age}} days</span>
+                        </button>
+                        <button type="button" class="btn btn-dark mb-1">
+                            Issues <span class="badge badge-light">{{issues}}</span>
+                        </button>
+                        <button type="button" class="btn btn-dark mb-1">
+                            Last Updated <span class="badge badge-light">{{last_updated}}</span>
+                        </button>
+                        <button type="button" class="btn btn-dark mb-1">
+                            Average number of days per release <span class="badge badge-light">{{average_time_to_release}} days</span>
+                        </button>
+                        <button type="button" class="btn btn-dark mb-1">
+                            Tags count on StackOverflow <span class="badge badge-light">{{qa_count}}</span>
+                        </button>
+                    </center>
+                </div>
+                <br />
+
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Security</h6>
+                        <hr />
+                        <b>{{vulnerability_count}} potential vulnerabilities found on mitre.org</b>
+                        <br />
+                        <a href="{{mitre_url}}" target="_blank">{{mitre_url}}</a>
+                        <br/><br/>
+                        <b>{{deep_vulnerability_count}} potential dependency vulnerabilities found by OWASP Dependency Checker</b>
+                        <br />
+                        <a href="{{deep_security_report_url}}" target="_blank">{{deep_security_report_url}}</a>
+                    </div>
+                </div>
+                <br />
+
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Commit Maturity</h6>
+                            <b>Crossovers = </b>
+                            Corrective-Perfective: {{cp_count}}
+                            Corrective-Adaptive: {{ca_count}}
+                            Perfective-Adaptive: {{pa_count}}
+                            <a href="{{commit_maturity}}" target="_blank">
+                                <img src="{{commit_maturity}}" class="img-fluid" style="cursor: pointer;" />
+                            </a>  
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Recent Commit Activity</h6>
+                                <a href="{{recent_commit_activity}}" target="_blank">
+                                    <img src="{{recent_commit_activity}}" class="img-fluid" style="cursor: pointer;" />
+                                </a>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Commit Classification</h6>
+                                <a href="{{commit_classification}}" target="_blank">
+                                    <img src="{{commit_classification}}" class="img-fluid" style="cursor: pointer;" />
+                                </a>  
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+</body>
+
+</html>
